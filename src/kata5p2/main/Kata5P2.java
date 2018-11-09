@@ -4,25 +4,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import kata5p2.model.Histogram;
-import kata5p2.model.Mail;
 import kata5p2.view.HistogramDisplay;
 import kata5p2.view.MailHistogramBuilder;
-import kata5p2.view.MailListReader;
+import kata5p2.view.MailListReaderBD;
 
 public class Kata5P2 {
     
-    private final String fileName;
-    private List<Mail> mailList;
+    private List<String> mailList;
     private Histogram<String> histogram;
     
-    public Kata5P2(String fileName){
-        this.fileName = fileName;
+    public Kata5P2(){
         mailList = new ArrayList<>();
     }
     
     public static void main(String[] args) throws IOException{
-        Kata5P2 kata4 = new Kata5P2("email.txt");
-        kata4.execute();
+        Kata5P2 kata5p2 = new Kata5P2();
+        kata5p2.execute();
     }
 
     private void execute() throws IOException{
@@ -32,7 +29,7 @@ public class Kata5P2 {
     }
     
     private void input() throws IOException {
-        mailList = new MailListReader().read(fileName);
+        mailList = new MailListReaderBD().read();
     }
 
     private void process() {
